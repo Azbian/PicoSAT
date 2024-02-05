@@ -88,7 +88,7 @@ Serial.write("give");
 }
 void loop() {
   if (Serial.available()) {
-    int pixels=128;       //Exprected pixels bytes number
+    int pixels=128;       //Expected pixels bytes number
     byte buff[pixels];    //Array that contains the pixels
     capture();            //Function for capturing image
     length = myCAM.read_fifo_length();
