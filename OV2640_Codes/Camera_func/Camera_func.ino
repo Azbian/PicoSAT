@@ -88,19 +88,20 @@ Serial.write("give");
 }
 void loop() {
   if (Serial.available()) {
-    int pixels=128;
-    byte buff[pixels];
-    capture();
+    int pixels=128;       //Exprected pixels bytes number
+    byte buff[pixels];    //Array that contains the pixels
+    capture();            //Function for capturing image
     length = myCAM.read_fifo_length();
     Serial.println(length, DEC);
+    //Length of the image is 153608, if matched picture is ok
     if (length == 153608) {
-      cycles = length / pixels;
+      cycles = length / pixels;   //How many cycles for transfer the whole image
       Serial.println(cycles);
-      Serial.write("str");
+      Serial.write("str");        //Indicate the start of the image
       for (int i = 0; i < cycles; i++) {
-        read_img(pixels, buff);
+        read_img(pixels, buff);   //Read the image data from the FIFO of the camera
         for (int j = 0; j < pixels; j++) {
-          Serial.write(buff[j]);
+          Serial.write(buff[j]);   //Give the byted through Serial port
         }
       }
     }
