@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 
-ser=serial.Serial('COM8',74880, timeout=0.5)  #74880 is the Highest baud rate
+ser=serial.Serial('COM3',9600, timeout=0.5)  #74880 is the Highest baud rate
 
 def rd():
     count=0

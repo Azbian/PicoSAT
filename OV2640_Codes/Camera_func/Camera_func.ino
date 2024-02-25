@@ -32,10 +32,10 @@ uint8_t vid, pid;
 uint8_t temp;
 #if defined(__SAM3X8E__)
   Wire1.begin();
-  Serial.begin(74880);
+  Serial.begin(9600);
 #else
   Wire.begin();
-  Serial.begin(74880);
+  Serial.begin(9600);
 #endif
 
 pinMode(CS, OUTPUT);
@@ -118,6 +118,7 @@ void capture(){
     //Flush the FIFO
     myCAM.flush_fifo();
     myCAM.clear_fifo_flag();
+    delay(200);
     //Start capture
     myCAM.start_capture();
     start_capture = 0;
